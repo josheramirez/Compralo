@@ -1,0 +1,62 @@
+capitulo 8 (log in)
+
+creo controller session paa hacer log in y log out
+
+form_for(@user) // rails manda los datos a un objeto modelo user
+form_for(:session, url: login_path) // como no objeto modelo session manda datos session a login:path (rails sabe q los tiene q  mandar al post)
+
+
+
+user.find y user.authentificate //validan al usario en base de datos
+
+metodo session crea cookies temporales con los datos entregado (cookies son encriptados)
+
+creo variables q verfican si hay alguien loggeado curren_user, con eso puedo modificar el aspecto de la  web (menus)
+ 
+ agrego esto para funcionalidades de bootstrap // app/assets/javascripts/application.js
+
+//=require jquery
+//=require jquery_ujs
+//=require bootstrap
+//=require turbolinks
+//=require_tree .
+
+
+
+user.digest // modelo user ? no lo entendi
+
+
+creo log out en sessio helper para deslogear al ususario
+
+comienzo el recuerdame, incluso si cierro el navegador
+
+los de session desaparece al cerrar el navegador
+
+storing a user’s (encrypted)
+
+rails generate migration add_remember_digest_to_users remember_digest:string //agrego a tabla remember_digest para autentificar cookues
+
+agrego random token en //user model
+
+attr_accessor :remember_token //tipo attr_accessor son variables declaradas en los modelos y pueden ser sadas de maera global
+
+
+
+User.new_token, crea clave
+User.digest(string), encripta clave
+remember , actualiza la clave en db
+authenticated?(remember_token) , compara los desencriptado de db con el token remeber_token dado
+
+
+cookies persistentes 
+
+actualizo en current user en sessison hyelper
+
+
+//ahora aplicacion recuerda a ussrio aunque cierre l apalicacion
+ como ver los browser cookies?
+
+
+ olvidar usuario forget // en modelo user borra el remember digest
+
+
