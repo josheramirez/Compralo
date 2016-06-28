@@ -14,9 +14,9 @@ class SessionsController < ApplicationController
 		params[:session][:remember_me] == '1' ? remember(user) : forget(user)	
 			#remember (user), es lo mismo q abajo en session helper
 			#remember user
-	
+	redirect_back_or user
 		#redirijo a pagina perfil del ususario , user_url(user)
-		redirect_to user
+		#redirect_to user
 	else
 		#flash[:danger] = 'Invalid email/password combination' //queda pegado el mensaje
 		flash.now[:danger] = 'Combinacion email/password incorrecto' # .now arregla el problema de pegado

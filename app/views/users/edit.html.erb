@@ -1,0 +1,31 @@
+<% provide(:title, "Editar") %>
+<h1>Actualiza tu perfil</h1>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for(@user) do |f| %>
+		<%= render 'shared/error_messages' %>
+		<%= f.label :nombre %>
+		<%= f.text_field :name, class: 'form-control' %>
+		<%= f.label :email %>
+		<%= f.email_field :email, class: 'form-control' %>
+		<%= f.label :numero_contacto, "Telefono" %>
+		<%= f.text_field :numero_contacto, class: 'form-control' %>
+		<%= f.label :calle_envio, "Direccion de envio" %>
+		<%= f.text_field :calle_envio, class: 'form-control' %>
+		<%= f.label :numero_envio, "Numero direccion" %>
+		<%= f.text_field :numero_envio, class: 'form-control' %>
+		<%= f.label :comuna_envio, "Comuna" %>
+		<%= f.text_field :comuna_envio, class: 'form-control' %>
+		<%= f.label :password %>
+		<%= f.password_field :password, class: 'form-control' %>
+		<%= f.label :password_confirmation, "Re-Password" %>
+		<%= f.password_field :password_confirmation, class: 'form-control' %>
+		<%= f.submit "Actualizar", class: "btn btn-primary" %>
+		<% end %>
+
+		<div class="gravatar_edit">
+			<%= gravatar_for @user %>
+			<a href="http://gravatar.com/emails" target=_blank>change</a>
+		</div>
+	</div>
+</div>

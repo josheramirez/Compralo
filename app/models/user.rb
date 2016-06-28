@@ -9,6 +9,16 @@ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 validates   :email, presence: true, length: { maximum: 255 },
 			format: { with: VALID_EMAIL_REGEX },
 			uniqueness: { case_sensitive: false }
+
+# tiene que se un numero
+#validates :numero_contacto, presence: true
+# calle
+#validates :calle_envio, presence: true
+# tiene que se un numero
+#validates :numero_envio, presence: true
+# comuna
+#validates :comuna_envio, presence: true
+
 has_secure_password
 validates :password, length: { minimum: 6 }
 

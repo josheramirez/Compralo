@@ -11,6 +11,14 @@
 			<%= f.text_field :name, class: 'form-control' %>
 			<%= f.label :email %>
 			<%= f.email_field :email, class: 'form-control' %>
+			<%= f.label :numero_contacto, "Telefono" %>
+			<%= f.text_field :numero_contacto, class: 'form-control' %>
+			<%= f.label :calle_envio, "Direccion de envio" %>
+			<%= f.text_field :calle_envio, class: 'form-control' %>
+			<%= f.label :numero_envio, "Numero direccion" %>
+			<%= f.text_field :numero_envio, class: 'form-control' %>
+			<%= f.label :comuna_envio, "Comuna" %>
+			<%= f.text_field :comuna_envio, class: 'form-control' %>
 			<%= f.label :password %>
 			<%= f.password_field :password, class: 'form-control' %>
 			<%= f.label :password_confirmation, "Re-Password" %>

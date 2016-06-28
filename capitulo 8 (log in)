@@ -60,3 +60,45 @@ actualizo en current user en sessison hyelper
  olvidar usuario forget // en modelo user borra el remember digest
 
 
+remember checkbox 
+
+
+
+capitulo 9
+
+git updating-users
+
+
+edit // user controler editar usyario
+edit // view/user/edit.html.erb
+
+agregar a tabla
+la forma del siguiente codigo  
++rails generate migration // comando que agrega atributos a base de datos
++add_"nombre_migracion"_add_to_"nombre modelo/tabla que agregare"  // modelo es llamado en plural
++\ "nombre_atributo1": "tipo_dato" "nombre_atributo2": "tipo_dato" "nombre_atributo2": "tipo_dato"
+
+$ rails generate migration add_activation_to_users \ activation_digest:string activated:boolean activated_at:datetime
+
+
+rails generate migration add_atributos_to_users \ numero_contacto:sring calle_envio:string numero_envio:string comuna_envio:string
+
+bundle exec rake db:migrate // actuaiaz la tabla
+
+agrege numero_contacto,calle,numero_calle,comuna // user_controller, edit.html, new.html (login)
+
+update / user_controller , llamado desde edit usuario html
+
+
+AUTHEBTIFICACION
+
+before_action :logged_in_user, only: [:edit, :update]  // antes de acceder a metodo edit o update , se hace logged_in_user
+
+UNLESS (CONDICION) , si condicion es falsa de hace el bloque
+logged_in_user // evita que gente no logeeada edite usuarios
+correct_user // evito q el usuario logeado edite otro perfil q no sea el de el usa atributos y metodos de otros controllers
+  
+
+
+redireck_back , store_location // redirige a la paguina q trataba, session_controller, session_helper, user_controller
+
