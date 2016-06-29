@@ -147,4 +147,18 @@ rails generate mailer UserMailer account_activation password_reset //madar mails
 mailer crea 2 vistas en modo texto y modo html
 reveer el tema de mail pa q quede claro
 
-modifico para visualizar los mails  // config/environments/development.rb
+modifico para visualizar los mails  // config/environments/development.rb , account_activayion.html
+
+metaprogramacion 563 // unthentificate generico
+
+agrego edit // activation_controller
+
+activar cuenta // app/controllers/sessions_controller.rb
+
+
+activate, send_activation_email // app/models/user.rb
+
+modifico create //app/controllers/users_controller.rb
+
+
+atrapao en hacer funcionar la wea de MAAILLLLLLLLLLL CUCPALO PROGRAMACION CULIA DE LA PERRA

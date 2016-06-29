@@ -24,9 +24,10 @@ before_action :admin_user,only: :destroy
 		if @user.save
 			#logeo al usuario recien creado
 
-			#mando mail
-			@user.send_activation_email
+			#mando mail 
 
+			UserMailer.account_activation(@user).deliver_now 
+			
 			#log_in @user
 			flash[:info] = "Por favor revisa tu mail para activar tu cuenta."
 			#flash[:success] = "Bienvenido a Compralo!"
