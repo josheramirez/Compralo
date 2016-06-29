@@ -7,16 +7,16 @@ class SessionsController < ApplicationController
   	#busco al ususario en la base de datos 
   	user = User.find_by(email: params[:session][:email].downcase)
   	#valido al usario
-	if user && user.authenticate(params[:session][:password])
-		#creo cookies
-		log_in user
-		#si esta clickeado hago remember user sino forget user
-		params[:session][:remember_me] == '1' ? remember(user) : forget(user)	
-			#remember (user), es lo mismo q abajo en session helper
-			#remember user
-	redirect_back_or user
-		#redirijo a pagina perfil del ususario , user_url(user)
-		#redirect_to user
+	if user.activated?
+log_in user
+params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+redirect_back_or user
+else
+message = "Cuenta inactiva. "
+message += "Revisa tu ma para activar tu cuenta."
+flash[:warning] = message
+redirect_to root_url
+end
 	else
 		#flash[:danger] = 'Invalid email/password combination' //queda pegado el mensaje
 		flash.now[:danger] = 'Combinacion email/password incorrecto' # .now arregla el problema de pegado

@@ -6,7 +6,7 @@ before_action :correct_user,only: [:edit, :update]
 before_action :admin_user,only: :destroy
 
 	def index
-		@users = User.all
+	 @users = User.paginate(page: params[:page])
 	end
 	
 	def show
@@ -19,11 +19,18 @@ before_action :admin_user,only: :destroy
 	
 	def create
 		@user = User.new(user_params)
+
+		#si es valido los parametro si se guarda
 		if @user.save
 			#logeo al usuario recien creado
-			log_in @user
-			flash[:success] = "Bienvenido a Compralo!"
-			redirect_to @user
+
+			#mando mail
+			@user.send_activation_email
+
+			#log_in @user
+			flash[:info] = "Por favor revisa tu mail para activar tu cuenta."
+			#flash[:success] = "Bienvenido a Compralo!"
+			redirect_to root_url
 		else
 			render 'new'
 		end

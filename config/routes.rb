@@ -13,5 +13,6 @@ Rails.application.routes.draw do
 
 # obtengpo el crud de usuarios
 resources :users
-
+# ruta de metodo edit
+resources :account_activations, only: [:edit]
 end

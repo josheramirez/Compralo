@@ -102,3 +102,49 @@ correct_user // evito q el usuario logeado edite otro perfil q no sea el de el u
 
 redireck_back , store_location // redirige a la paguina q trataba, session_controller, session_helper, user_controller
 
+agrego index a before_action //use congtorller
+modifico funcion gravatar size ,  user_helper
+
+
+gem 'faker', '1.4.2' // agrego a gemfile
+
+bundle exec rake db:migrate:reset // borro base de datos
+bundle exec rake db:seed // lleno base con lo q hay en /db/seed.rb
+
+// agrego para will paginate estos en gemmfile
+gem 'will_paginate', '3.0.7'
+gem 'bootstrap-will_paginate', '0.0.10'
+
+index // user_controller
+index.html
+
+
+
+rails generate migration add_admin_to_users   \ admin:boolean  comprador:boolean vendedor:boolean // creo tipos de usuario
+
+
+admin en base de dato
+
+delete // _user.html , user_controller, index.html
+destroy // user controller
+
+stan-dard REST ?
+
+
+
+CAPITULO 10 
+
+CREO controller activasion cuenta
+activation_digest:string activated:boolean activated_at:datetime // a user model
+activation_token, activation_digest //user model
+rails generate mailer UserMailer account_activation password_reset //madar mails
+	/views/user_mailer/account_activation.text.erb
+	app/views/user_mailer/account_activation.html.erb
+	app/mailers/application_mailer.rb
+	app/mailers/user_mailer.rb
+
+
+mailer crea 2 vistas en modo texto y modo html
+reveer el tema de mail pa q quede claro
+
+modifico para visualizar los mails  // config/environments/development.rb
