@@ -25,7 +25,8 @@ before_action :admin_user,only: :destroy
 			#logeo al usuario recien creado
 
 			#mando mail 
-
+            #podria llamar a send_activation_email
+            #@user.send_activation_email
 			UserMailer.account_activation(@user).deliver_now 
 			
 			#log_in @user
