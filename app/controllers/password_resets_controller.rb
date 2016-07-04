@@ -1,37 +1,41 @@
 class PasswordResetsController < ApplicationController
 before_action :get_user,only: [:edit, :update]
 before_action :valid_user, only: [:edit, :update]
-before_action :check_expiration, only: [:edit, :update]
+#before_action :check_expiration, only: [:edit, :update]
 
 
-	def new
+def new
+
 end
+
 def create
-@user = User.find_by(email: params[:password_reset][:email].downcase)
-if @user
-@user.create_reset_digest
-@user.send_password_reset_email
-flash[:info] = "Revisa tu mail para cambiar el password"
-redirect_to root_url
-else
-flash.now[:danger] = "Mail incorrecto"
-render 'new'
-end
+	@user = User.find_by(email: params[:password_reset][:email].downcase)
+	if @user
+		@user.create_reset_digest
+		@user.send_password_reset_email
+		flash[:info] = "Revisa tu mail para cambiar el password"
+		redirect_to root_url
+	else
+	flash.now[:danger] = "Mail incorrecto"
+	render 'new'
+	end
 end
 
 def edit
+
 end
+
 def update
-if password_blank?
-flash.now[:danger] = "Password no puede estar vacio"
-render 'edit'
-elsif @user.update_attributes(user_params)
-log_in @user
-flash[:success] = "Password reseteado."
-redirect_to @user
-else
-render 'edit'
-end
+	if password_blank?
+	flash.now[:danger] = "Password no puede estar vacio"
+	render 'edit'
+	elsif @user.update_attributes(user_params)
+	log_in @user
+	flash[:success] = "Password reseteado."
+	redirect_to @user
+	else
+	render 'edit'
+	end
 end
 
 private
