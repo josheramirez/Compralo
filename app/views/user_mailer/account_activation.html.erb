@@ -1,6 +1,15 @@
- <h1>Sample App</h1>
+<!--  <h1>Sample App</h1>
 <p>Hi <%= @user.name %>,</p>
 <p>
 Welcome to the Sample App! Click on the link below to activate your account:
 </p>
-<%= link_to "Activate", edit_account_activation_url(@user.activation_token,email: @user.email) %>
+<%= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+ -->
+
+<h1>Compralo/h1>
+<p>Hola <%= @user.name %></p>
+<p>
+  Bienvenido a Compralo  haz Click  en el link para activar tu cuenta:
+</p>
+
+<%= link_to "Activar Cuenta", edit_account_activation_url(@user.activation_token,email:@user.email) %>

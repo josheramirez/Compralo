@@ -163,3 +163,69 @@ modifico create //app/controllers/users_controller.rb
 
 atrapao en hacer funcionar la wea de MAAILLLLLLLLLLL CUCPALO PROGRAMACION CULIA DE LA PERRA
 HAY Q TENER USUAARIOS ACTIVOS PA CAMBIAR LA WEA DE PASSWORD
+
+
+
+
+*me pitie la table usuario* / no se como?
+
+la repare eliminandola   	/ rails destroy model User
+y agregando cada atributo 	/ rails generate migration add_nombre-caracteristico_to_users nombre_atributo:tipo_atributo
+							/ actualizo la tabla en base con rails exec rake db:migrate
+
+
+
+
+
+capitu 11  micropost 
+
+
+
+creo micropost controller / user:referece me crea la relacion belong to user en modelo micropost
+
+agrego has many micropost / en mmodelo user
+
+agrego validaciones en / en modelo micropost
+
+default scope / ordena los post del mas nuevo al mas viejo
+
+
+creo controlador micropost / pero la vista de micropost _micropost (_ se les llama parciales ) sera renderizado desde otra vista (user show)
+
+@microposts // variable en show que guarda todos los posteos de ese ususario (con will paginate)
+
+edito show vista , agrego bloque q muestra post uso micropost.any? (solo si hay post , tambien existe el micropost.count  q me da la cantidad de post)
+
+creo micropost de prueba en seeds
+agrego css ded micropost en custom css
+
+agrego logged_in_user // aplication controler para modificar microspor debo estar loggeado, lo llamo desde micropost controller y a su vez llama a logged in ? q esta en session helper
+
+before_action :logged_in_user, only: [:create, :destroy] // en micropost crontroller
+ 
+create y micropost params // micropost controller
+
+
+CAMBIO COMO SE VE PAGINA DE INICIO DEPENDIENDO SI HAY USUARIO //modifico vista static pages home, 
+
+creo parcial shres info  y _micropost_form.html.erb //app/views/shared/_user_info.html.erb 
+
+@micropost = current_user.microposts.build if logged_in? // static pages home , controller
+
+@user por object // generalizo errores en shared/_error_messengers
+
+<%= render 'shared/error_messages', object: f.object %> // vista user/ edit,new y en password reset
+
+QUEFDE EN FEED // PAIGINA INICIO VISTA COMPARTIDA CAJA DE POSTEO Y LISTA DE POSTEOS (FEEDS)
+
+metodo feed en en // user model
+@feed  // static page controller
+_feed.html //shared view
+
+agrego feed vacio // micropost controller
+delete link // _microspot.html
+
+before action correct user y destroy // micrpost controller
+
+MICROPOST IMAGENES QUEDE
+
