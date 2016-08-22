@@ -1,7 +1,15 @@
 <li id="micropost-<%= micropost.id %>">
-	<%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
-	<span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+	<!-- <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %> -->
+	<span class="user"><%= link_to micropost.user.name, micropost.user %> (<%= micropost.tipo %>)</span>
 	<span class="content"><%= micropost.content %></span>
+	
+		<% if micropost.es_venta? %>
+			<span class="content">precio: <%= micropost.precio %> cantidad: <%= micropost.cantidad %></span>
+			<span class="comprar"><%= link_to "Comprar", micropost, class: "btn btn-lg btn-primary" %></span>
+		<% end %>
+
+	
+
 	<span class="timestamp">
 	Posted <%= time_ago_in_words(micropost.created_at) %> ago.
 	<% if current_user?(micropost.user) %>
@@ -9,4 +17,6 @@
 									 data: { confirm: "Estas seguro?" } %>
 	<% end %>
 	</span>
+
+
 </li>

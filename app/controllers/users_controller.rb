@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 #antes de acceder a metodo edit o update , se hace logged_in_user
-before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
 before_action :correct_user,only: [:edit, :update]
 #confirma q solo administrador pueda borrar
 before_action :admin_user,only: :destroy
@@ -20,7 +20,7 @@ before_action :admin_user,only: :destroy
 	
 	def create
 		@user = User.new(user_params)
-
+		@user.vendedor=true;
 		#si es valido los parametro si se guarda
 		if @user.save
 			#logeo al usuario recien creado
@@ -60,6 +60,23 @@ User.find(params[:id]).destroy
 flash[:success] = "Usuario borrado"
 redirect_to users_url
 end
+
+
+def following
+@title= "Usuarios que sigues"
+@user= User.find(params[:id])
+@users= @user.following.paginate(page: params[:page])
+render'show_follow'
+end
+
+def followers
+@title = "Usuarios que te siguen"
+@user = User.find(params[:id])
+@users = @user.followers.paginate(page: params[:page])
+render 'show_follow'
+end
+
+
 
 	private
 	

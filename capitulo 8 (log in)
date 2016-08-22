@@ -229,3 +229,35 @@ before action correct user y destroy // micrpost controller
 
 MICROPOST IMAGENES QUEDE
 
+compralo
+	-modifico vistas para vendedores y compradores
+	-agrego atributos a modelos micropost (tipo : venta,pregunta,compra) usuario (comprador,vendedor)
+	-modifico vista de formulario de micropost venta
+	-modifico feed dependiendo del tipo de micopost
+
+RELATIONSHIPS
+
+modelo relationships
+
+al relacionar modelos (s many, belong to)estos crea metodos para manipularlos
+has_many :following, through: :active_relationships, source: :followed
+
+
+
+PACIALES follow y unfollow
+autetifico loggin_in_user  following fallowers  // user controller
+following y follower llamaan a un render no llaman a una vista de mismo nombre
+
+creo controller relationship // por q hago cosas con boton follow y unfollow
+
+_follow toma el @use.id (el id del usuario del perfil q estoy viendo y quiero seguir), y lo pasa al create (que es la accion del build)de relationship como objeto oculto
+con hidden_field_tag :"nombre_atributo_en_tabla" , "valor que tendra ese atributo"
+
+actualizo feed con subconsulta para ver comentarios de los que sigo // user model
+
+ME FALTA TEMA FOTOS
+ME FALTA AJAX EN BOTON FOLLOW
+
+
+
+en show creo objeto micro2 relacionado con id ese lo lleno en show y ese objeto lo envio a create

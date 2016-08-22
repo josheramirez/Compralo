@@ -81,6 +81,9 @@ end
 	# end
 
 
+
+
+
 # Forgets a persistent session.
 def forget(user)
 user.forget
@@ -94,4 +97,13 @@ session.delete(:user_id)
 @current_user = nil
 end
 
+end
+
+# devuelve true si el ususario es un comprador
+def comprador?
+current_user.comprador==true
+end
+
+def vendedor?
+current_user.vendedor==true
 end

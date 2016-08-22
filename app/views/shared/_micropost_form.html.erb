@@ -2,6 +2,10 @@
 <%= render 'shared/error_messages', object: f.object %>
 <div class="field">
 <%= f.text_area :content, placeholder: "Publica nueva venta..." %>
+	<%= f.label "Precio" %>
+	<%= f.text_field :precio, class: 'form-control' %>
+	<%= f.label "Cantidad" %>
+	<%= f.text_field :cantidad, class: 'form-control' %>
 </div>
-<%= f.submit "Post", class: "btn btn-primary" %>
+<%= f.submit "Publicar Venta", class: "btn btn-primary" %>
 <% end %>

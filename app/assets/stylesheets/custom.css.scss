@@ -3,34 +3,31 @@
 
 
 
-@mixin box_sizing {
--moz-box-sizing:
-border-box;
--webkit-box-sizing: border-box;
-box-sizing:
-border-box;
+html {
+	overflow-y: scroll;
 }
 
-
-
-/* mixins, variables, etc. */
-$gray-medium-light: #eaeaea;
-/* universal */
-body {
-padding-top: 60px;
+body {	
+	padding-top:60px;
 }
+
 section {
-overflow: auto;
+	overflow: auto;
 }
+
 textarea {
-resize: vertical;
+	resize: vertical;
 }
+
 .center {
-text-align: center;
-h1 {
-margin-bottom: 10px;
+	text-align: center;  
 }
+
+.center h1 {
+	margin-bottom:60px;
 }
+
+
 /* typography */
 h1, h2, h3, h4, h5, h6 {
 line-height: 1;
@@ -39,76 +36,86 @@ h1 {
 font-size: 3em;
 letter-spacing: -2px;
 margin-bottom: 30px;
-text-align: center;
+text-align: center
 }
+
+
 h2 {
 font-size: 1.2em;
 letter-spacing: -1px;
 margin-bottom: 30px;
 text-align: center;
 font-weight: normal;
-color: $gray-light;
+color: #777;
 }
 p {
 font-size: 1.1em;
 line-height: 1.7em;
 }
+
 /* header */
+
 #logo {
 float: left;
 margin-right: 10px;
 font-size: 1.7em;
-color: white;
+color: #fff;
 text-transform: uppercase;
 letter-spacing: -1px;
 padding-top: 9px;
 font-weight: bold;
-&:hover {
-color: white;
+}
+#logo:hover {
+color: #fff;
 text-decoration: none;
 }
-}
-
 
 
 /* footer */
 footer {
 margin-top: 45px;
 padding-top: 5px;
-border-top: 1px solid $gray-medium-light;
-color: $gray-light;
-a {
-color: $gray;
-&:hover {
-color: $gray-darker;
+border-top: 1px solid #eaeaea;
+color: #777;
 }
+footer a {
+color: #555;
 }
-small {
+footer a:hover {
+color: #222;
+}
+footer small {
 float: left;
 }
-ul {
+footer ul {
 float: right;
 list-style: none;
-li {
+}
+footer ul li {
 float: left;
 margin-left: 15px;
 }
-}
-}
 
+/* caja debug */
 
-/* miscellaneous */
-.debug_dump {
-clear: both;
-float: left;
-width: 100%;
-margin-top: 45px;
--moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
-box-sizing: border-box;
+@mixin box_sizing{
+	-moz-box-sizing:		border-box;
+	-webwebkit-box-sizing:	border-box;
+	box-sizing:				border-box;
 }
 
+.debug_dump{
+	clear: both;
+	float: left;
+	width: 100%;
+	margin-top: 45px;
+	@include box_sizing;
+
+}
+ 
 /* sidebar */
+
+
 aside {
 section.user_info {
 margin-top: 20px;
@@ -142,6 +149,42 @@ margin-right: 10px;
 .gravatar_edit {
 margin-top: 15px;
 }
+.stats {
+overflow: auto;
+margin-top: 0;
+padding: 0;
+a {
+float: left;
+padding: 0 10px;
+border-left: 1px solid $gray-lighter;
+color: gray;
+&:first-child {
+padding-left: 0;
+border: 0;
+}
+&:hover {
+text-decoration: none;
+color: blue;
+}
+}
+strong {
+display: block;
+}
+}
+.user_avatars {
+overflow: auto;
+margin-top: 10px;
+.gravatar {
+margin: 1px 1px;
+}
+a {
+padding: 0;
+}
+}
+.users.follow {
+padding: 0;
+}
+
 
 /* forms */
 input, textarea, select, .uneditable-input {
@@ -169,30 +212,84 @@ color: $state-danger-text;
 }
 
 .checkbox {
-margin-top: -10px;
+margin-top: -5px;
 margin-bottom: 10px;
 span {
-margin-left: 20px;
+margin-left: 30px;
+
 font-weight: normal;
 }
 }
 #session_remember_me {
 width: auto;
+margin-top: -1px;
 margin-left: 0;
 }
 
-/* Users index */
-.users {
-list-style: none;
-margin: 0;
-li {
-overflow: auto;
-padding: 10px 0;
-border-bottom: 1px solid $gray-lighter;
-}
+/* Users index*/
+
+.users{
+	list-style:none;
+	margin:0;
+	li {
+		overflow: auto;
+		padding: 10px 0;
+		border-bottom: 1px solid $gray-lighter;	
+	} 
 }
 
+/* Will_paginator */
+
+.pagination {
+  background: white;
+  cursor: default;
+  /* self-clearing method: */ }
+  .pagination a, .pagination span, .pagination em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px; }
+  .pagination .disabled {
+    color: #999999;
+    border: 1px solid #dddddd; }
+  .pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #2e6ab1;
+    color: white;
+    border: 1px solid #2e6ab1; }
+  .pagination a {
+    text-decoration: none;
+    color: #105cb6;
+    border: 1px solid #9aafe5; }
+    .pagination a:hover, .pagination a:focus {
+      color: #000033;
+      border-color: #000033; }
+  .pagination .page_info {
+    background: #2e6ab1;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center; }
+    .pagination .page_info b {
+      color: #000033;
+      background: #6aa6ed;
+      padding: 0.1em 0.25em; }
+  .pagination:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+  * html .pagination {
+    height: 1%; }
+  *:first-child + html .pagination {
+    overflow: hidden; }
+
+
 /* microposts */
+
 .microposts {
 list-style: none;
 padding: 0;

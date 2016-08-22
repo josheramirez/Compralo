@@ -8,19 +8,31 @@ donde vendes todo antes de que llege a bodega
 
 
 <% if logged_in? %>
+
+<!-- SI ES COMPRADOR -->
+<!-- SI ES VENDEDOR -->
 	<div class="row">
 	<aside class="col-md-4">
+		
 		<section class="user_info">
 		<%= render 'shared/user_info' %>
 		</section>
 
-		<section class="micropost_form">
-			<%= render 'shared/micropost_form' %>
+		<section class="stats">
+		<%= render 'shared/stats' %>
 		</section>
+
+		<% if vendedor? %>
+			<section class="micropost_form">
+			
+				<%= render 'shared/micropost_form' %>
+			</section>
+		<% end %>
+
 	</aside>
 
 	<div class="col-md-8">
-		<h3>Micropost Feed</h3>
+		<h3>Ultimas publicaciones</h3>
 		<%= render 'shared/feed' %>
 	</div>
 
