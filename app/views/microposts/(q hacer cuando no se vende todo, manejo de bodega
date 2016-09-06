@@ -1,25 +1,4 @@
-
-class MicropostsController < ApplicationController
-	before_action :logged_in_user, only:[:create, :destroy]
-	before_action :correct_user,   only:[:destroy]
-	
-	
-	def show
-		@micropost1 = Micropost.find(params[:id])
-		#creo en memoria un objeto micropost con user_id relasionado a diferencia de micropost.new q crea un objeto micropost vacio
-		@micropost2 = current_user.microposts.build
-		#@micropost2 = Micropost.new
-	end
-	
-	def new
-		@micropost2 = Micropost.new
-	end
-	
-	def algo
-		@dato=params[:id];
-	end
-
-
+(q hacer cuando no se vende todo, manejo de bodega ) , darle a produccion 
 
 
 	def create
@@ -29,27 +8,27 @@ class MicropostsController < ApplicationController
 
 
 
-		# if @micropost.cantidad==nil || @micropost.cantidad==''
-		# 	@micropost.cantidad=0;
-		# end
+		if @micropost.cantidad==nil || @micropost.cantidad==''
+			@micropost.cantidad=0;
+		end
 
 
-		# if (@micropost_padre.cantidad-@micropost.cantidad)<0
+		if (@micropost_padre.cantidad-@micropost.cantidad)<0
 		
 
 
-		# 	flash[:danger]="la cantidad deve ser menor a la disponible"
-		# 	redirect_to micropost_path(@micropost_padre.id)
+			flash[:danger]="la cantidad deve ser menor a la disponible"
+			redirect_to micropost_path(@micropost_padre.id)
 			
 
 
-		# else
+		else
 
 
-		# 	if (@micropost.cantidad==0)
-		# 		flash[:danger]="deves poner una cantidad para comprar"
-		# 		redirect_to micropost_path(@micropost_padre.id)
-		# 	else
+			if (@micropost.cantidad==0)
+				flash[:danger]="deves poner una cantidad para comprar"
+				redirect_to micropost_path(@micropost_padre.id)
+			else
 
 					if current_user.vendedor?
 					@micropost.tipo="venta"
@@ -119,31 +98,10 @@ class MicropostsController < ApplicationController
 
 					end
 
-				#end		
+				end		
 
-		#end
+		end
 
 
 
-end
-
-	def destroy
-		@micropost.destroy
-		flash[:success]="Publicacion borrada"
-		redirect_to request.referrer||root_url
 	end
-
-
-
-	private
-
-	def micropost_params
-		params.require(:micropost).permit(:content, :precio, :cantidad, :tipo, :id_micropost, :cantidad_nueva)
-	end
-
-	def correct_user
-		@micropost= current_user.microposts.find_by(id: params[:id] )
-		redirect_to root_url if @micropost.nil?
-	end
-
-end

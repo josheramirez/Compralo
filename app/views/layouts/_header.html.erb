@@ -8,9 +8,9 @@
 
 				<% if logged_in? %>
 
-					<!-- SI ES VENDEDOR -->
+					<!-- SI ES COMPRADOR -->
 					<% if comprador? %>
-					<li><%= link_to "Compradores", users_path  %></li>
+						<li><%= link_to "Provedores", users_path  %></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							Cuenta<b class="caret"></b>
@@ -29,7 +29,7 @@
 					<% else %>
 					<!-- SI ES COMPRADOR  // por defecto-->
 					<!--<li><%= link_to "Users", users_path %></li>-->
-					<li><%= link_to "Provedores", users_path  %></li>
+					<li><%= link_to "Compradores", users_path  %></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							Cuenta<b class="caret"></b>

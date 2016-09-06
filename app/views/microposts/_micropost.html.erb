@@ -5,7 +5,18 @@
 	
 		<% if micropost.es_venta? %>
 			<span class="content">precio: <%= micropost.precio %> cantidad: <%= micropost.cantidad %></span>
-			<span class="comprar"><%= link_to "Comprar", micropost, class: "btn btn-lg btn-primary" %></span>
+
+			<% if micropost.user==current_user %>
+			
+			<% else %>
+				
+
+				<span class="comprar"><%= link_to "Comprar",{ :controller => :microposts, :action => :algo , :id => micropost.id},{class: "btn btn-lg btn-primary"}%></span> 
+				<span class="comprar"><%= link_to "Carro ",{ :controller => :microposts, :action => :algo , :id => micropost.id},{class: "btn btn-lg btn-primary"}%></span> 
+
+			<% end %>
+
+			
 		<% end %>
 
 	

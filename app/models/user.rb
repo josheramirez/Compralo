@@ -14,6 +14,9 @@ has_many :followers, through: :passive_relationships, source: :follower
 
 	# tiene muchos micropost , dependent si ususario s edestruye los post del ususario se destruyen
 	has_many :microposts, dependent: :destroy
+	has_many :compras, dependent: :destroy
+
+
 	attr_accessor :remember_token, :activation_token, :reset_token
 	before_save :downcase_email
 	before_create :create_activation_digest

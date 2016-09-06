@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160710214817) do
+ActiveRecord::Schema.define(version: 20160905234831) do
+
+  create_table "compras", force: :cascade do |t|
+    t.integer  "producto_id"
+    t.integer  "cantidad_comprada"
+    t.integer  "vendedor_id"
+    t.integer  "user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "compras", ["user_id"], name: "index_compras_on_user_id"
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -58,5 +69,16 @@ ActiveRecord::Schema.define(version: 20160710214817) do
     t.boolean  "comprador"
     t.boolean  "vendedor"
   end
+
+  create_table "venta", force: :cascade do |t|
+    t.integer  "producto_id"
+    t.integer  "cantidad_comprada"
+    t.integer  "vendedor_id"
+    t.integer  "user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "venta", ["user_id"], name: "index_venta_on_user_id"
 
 end
