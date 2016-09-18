@@ -1,0 +1,11 @@
+
+DETALLE
+
+<% @detalle.each do |venta| %>
+<li>
+	codigo: <%=venta.id%> 
+	comprador: <%=venta.user.name%>
+	pago: <%=venta.micropost.precio%>
+
+</li>
+<% end %>

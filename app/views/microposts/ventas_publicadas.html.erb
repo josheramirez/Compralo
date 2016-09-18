@@ -1,0 +1,15 @@
+<% provide(:title, 'Ventas publicadas') %>
+<%conta=1%>
+<h1>Ventas publicadas</h1>
+
+	<ul class="users">
+		<% @ventas_publicadas.each do |ventas| %>
+			<li>
+			<%=conta%>
+			producto: <%= link_to ventas.content, ventas %>
+			precio: <%= ventas.precio %>
+			</li>
+			<%conta=conta+1%>
+		<% end %>
+	</ul>
+

@@ -1,0 +1,12 @@
+<h1>Historial de Ventas</h1>
+
+		<% @ventas.each do |venta| %>
+			<li>
+
+			<%= link_to "venta.id", venta %>
+			 
+			comprador: <%=venta.user.name%>
+			pago: <%=venta.micropost.precio%>
+			
+			</li> 
+		<% end %>

@@ -1,0 +1,12 @@
+<%=@fecha%>
+<% provide(:title, 'Bodega') %>
+<%conta=1
+bodega_mt3=0
+%>
+
+<h1>Bodega</h1>
+
+<% @en_bodega.each do |bodega| %>
+			<%=bodega.estado%>
+<%end %>
+

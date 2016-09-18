@@ -8,10 +8,15 @@ before_action :admin_user,only: :destroy
 	def index
 	 @users = User.paginate(page: params[:page])
 	end
+
+	def proveedores
+		@users=User.where(vendedor: true)
+	end
 	
 	def show
 		@user = User.find(params[:id])
 		@microposts = @user.microposts.paginate(page: params[:page])	
+		
 	end
 	
 	def new
@@ -20,7 +25,7 @@ before_action :admin_user,only: :destroy
 	
 	def create
 		@user = User.new(user_params)
-		@user.vendedor=true;
+		@user.comprador=true;
 		#si es valido los parametro si se guarda
 		if @user.save
 			#logeo al usuario recien creado
@@ -84,7 +89,7 @@ end
 		params.require(:user).permit(	:name, :email, :password,
 										:password_confirmation, :calle_envio,
 										:numero_envio, :comuna_envio,
-										:numero_contacto)
+										:numero_contacto,:mt2)
 	end
 
 	# Before filters

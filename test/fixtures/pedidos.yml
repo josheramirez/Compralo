@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  compra_id: 
   micropost_id: 
-  cantidad: 1
 
 two:
+  compra_id: 
   micropost_id: 
-  cantidad: 1

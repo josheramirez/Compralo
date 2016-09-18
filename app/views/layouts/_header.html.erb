@@ -10,14 +10,14 @@
 
 					<!-- SI ES COMPRADOR -->
 					<% if comprador? %>
-						<li><%= link_to "Provedores", users_path  %></li>
+						<li><%= link_to "Provedores", proveedores_path  %></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							Cuenta<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
-								<li><%= link_to "Ventas", current_user %></li>
-								<li><%= link_to "Perfil", edit_user_path(current_user) %></li>
+								<li><%= link_to "Mis compras", current_user %></li>
+								<li><%= link_to "Cambiar Perfil", edit_user_path(current_user) %></li>
 								<li class="divider"></li>
 								<li>
 								<%= link_to "Cerrar sesion", logout_path, method: "delete" %>
@@ -35,8 +35,10 @@
 							Cuenta<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
-								<li><%= link_to "Compras", current_user %></li>
-								<li><%= link_to "Perfil", edit_user_path(current_user) %></li>
+								<li><%= link_to "Ventas publicadas", publicaciones_path %></li>
+								<li><%= link_to "Ventas realizadas", ventas_path %></li>
+								<li><%= link_to "Bodega", bodega_path %></li>	
+								<li><%= link_to "Cambiar Perfil", edit_user_path(current_user) %></li>
 								<li class="divider"></li>
 								<li>
 								<%= link_to "Cerrar sesion", logout_path, method: "delete" %>

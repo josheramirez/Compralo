@@ -2,10 +2,18 @@
 <%= render 'shared/error_messages', object: f.object %>
 <div class="field">
 <%= f.text_area :content, placeholder: "Publica nueva venta..." %>
-	<%= f.label "Precio" %>
+	<%= f.label "Precio de venta (por kilo)" %>
 	<%= f.text_field :precio, class: 'form-control' %>
-	<%= f.label "Cantidad" %>
+	<%= f.label "Cantidad (kilos disponibles en venta)" %>
 	<%= f.text_field :cantidad, class: 'form-control' %>
+	<%= f.label "Metros cubicos (almacenamiento total en bodega)" %>
+	<%= f.text_field :mt3, class: 'form-control' %>
+	<%= f.label "Tiempo de llegada en horas (desde proveedor a bodega)" %>
+	<%= f.text_field :hrs, class: 'form-control' %>
+	<%= f.text_field :tipo, value:"publico", type:"hidden" %>
+
+	<%= #f.text_field :id_micropost, value:@micropost1.id, type:"hidden" 
+	%>
 </div>
 <%= f.submit "Publicar Venta", class: "btn btn-primary" %>
 <% end %>

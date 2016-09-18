@@ -1,10 +1,26 @@
+
+<%if micropost.cantidad_nueva != 0%>
+
 <li id="micropost-<%= micropost.id %>">
 	<!-- <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %> -->
-	<span class="user"><%= link_to micropost.user.name, micropost.user %> (<%= micropost.tipo %>)</span>
+	<span class="user"><%= link_to micropost.user.name, micropost.user %> 
+	<% 	
+		if (micropost.tipo=="compra")
+			dato="compro"
+		end	
+		if (micropost.tipo=="venta")
+			dato="vendio"
+		end
+		if (micropost.tipo!="compra" && micropost.tipo!="venta")
+			dato="publico"
+		end	
+	%>
+	<strong><%= dato %></strong></span>
+	
 	<span class="content"><%= micropost.content %></span>
 	
-		<% if micropost.es_venta? %>
-			<span class="content">precio: <%= micropost.precio %> cantidad: <%= micropost.cantidad %></span>
+		<% if micropost.es_venta?  %>
+			<span class="content">precio: <%= micropost.precio %> cantidad disponible: <%= micropost.cantidad_nueva %></span>
 
 			<% if micropost.user==current_user %>
 			
@@ -12,12 +28,33 @@
 				
 
 				<span class="comprar"><%= link_to "Comprar",{ :controller => :microposts, :action => :algo , :id => micropost.id},{class: "btn btn-lg btn-primary"}%></span> 
-				<span class="comprar"><%= link_to "Carro ",{ :controller => :microposts, :action => :algo , :id => micropost.id},{class: "btn btn-lg btn-primary"}%></span> 
+			
+				<!-- <span class="comprar"><%= link_to "Carro ",{ :controller => :microposts, :action => :algo , :id => micropost.id},{class: "btn btn-lg btn-primary"}%></span> 
+ -->
+ 			<span class="comprar"><%= link_to "Carro ",micropost, class: "btn btn-lg btn-primary"%></span> 
+
 
 			<% end %>
 
 			
 		<% end %>
+
+		<% if micropost.tipo=="publico" %>
+			
+			<span class="content">precio: <%= micropost.precio %> cantidad disponible: <%= micropost.cantidad_nueva %></span>
+			<% if micropost.user==current_user %>
+			<% else %>
+				<span class="comprar"><%= link_to "Comprar",{ :controller => :microposts, :action => :algo , :id => micropost.id},{class: "btn btn-lg btn-primary"}%></span> 
+				<span class="comprar"><%= link_to "Carro ",micropost, class: "btn btn-lg btn-primary"%></span> 
+			<% end %>
+		
+
+		<%end%>
+
+
+		<% if micropost.tipo=="compra" %>
+			<span class="content"><%= micropost.cantidad %> kilos</span>
+		<%end%>
 
 	
 
@@ -31,3 +68,5 @@
 
 
 </li>
+<%end%>
+

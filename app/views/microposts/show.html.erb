@@ -2,9 +2,11 @@
 <div class="field">Producto: </div>
 <%= @micropost1.id%>
 <div class="field">Cantidad disponible: </div>
-<%= @micropost1.cantidad%>
+<%= @micropost1.cantidad_nueva%>
 <div class="field">Precio: </div>
 <%= @micropost1.precio%>
+<div class="field">mt3: </div>
+<%= @micropost1.mt3%>
 <br>
 
 <%= form_for(@micropost2) do |f| %>
@@ -14,11 +16,14 @@
 	<%= f.text_field :id_micropost, value:@micropost1.id, type:"hidden" %>
 	<%= f.text_field :content, value: @micropost1.content, type:"hidden" %>
 	<%= f.text_field :precio,value:@micropost1.precio, type:"hidden" %>
+	<%= f.text_field :hrs,value:0, type:"hidden" %>
+
 	<%= f.label "Cantidad" %>
 	<%= f.text_field :cantidad, class: 'form-control' %>
 	<%= f.label "Tipo de publicacion" %>
 	<%= f.text_field :tipo, value:"compra", type:"hidden" %>
+
 </div>
-<%= f.submit "ComprarS", class: "btn btn-primary" %>
+<%= f.submit "Comprar", class: "btn btn-primary" %>
 
 <% end %>

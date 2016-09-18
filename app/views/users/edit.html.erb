@@ -16,10 +16,17 @@
 		<%= f.text_field :numero_envio, class: 'form-control' %>
 		<%= f.label :comuna_envio, "Comuna" %>
 		<%= f.text_field :comuna_envio, class: 'form-control' %>
+
+	<%= f.text_field :mt2, value:1000, type:"hidden" %>
+
+
+
 		<%= f.label :password %>
 		<%= f.password_field :password, class: 'form-control' %>
 		<%= f.label :password_confirmation, "Re-Password" %>
 		<%= f.password_field :password_confirmation, class: 'form-control' %>
+
+
 		<%= f.submit "Actualizar", class: "btn btn-primary" %>
 		<% end %>
 
