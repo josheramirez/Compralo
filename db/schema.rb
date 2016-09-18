@@ -11,17 +11,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708233604) do
+ActiveRecord::Schema.define(version: 20160917224235) do
 
-  create_table "microposts", force: :cascade do |t|
-    t.text     "content"
+  create_table "compras", force: :cascade do |t|
+    t.integer  "micropost_id"
+    t.integer  "cantidad"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
-  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+  add_index "compras", ["micropost_id"], name: "index_compras_on_micropost_id"
+
+  create_table "microposts", id: false, force: :cascade do |t|
+    t.integer  "id",             null: false
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "precio"
+    t.integer  "cantidad"
+    t.string   "tipo"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "cantidad_nueva"
+    t.integer  "id_micropost"
+    t.integer  "compra_id"
+    t.integer  "mt3"
+    t.integer  "venta_cantidad"
+    t.integer  "bodega_id"
+    t.datetime "fecha_llegada"
+    t.integer  "hrs"
+    t.text     "estado"
+  end
+
   add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
+
+  create_table "pedidos", force: :cascade do |t|
+    t.integer  "compra_id"
+    t.integer  "micropost_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "pedidos", ["compra_id"], name: "index_pedidos_on_compra_id"
+  add_index "pedidos", ["micropost_id"], name: "index_pedidos_on_micropost_id"
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -42,6 +85,7 @@ ActiveRecord::Schema.define(version: 20160708233604) do
     t.string   "comuna_envio"
     t.boolean  "comprador"
     t.boolean  "vendedor"
+    t.integer  "mt2"
   end
 
 end
