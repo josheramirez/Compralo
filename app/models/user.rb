@@ -88,17 +88,17 @@ has_many :followers, through: :passive_relationships, source: :follower
 	def feed
 # muestro los posteos echos por mi 
 
-# following_ids = "SELECT followed_id FROM relationships
-# WHERE follower_id = :user_id"
-# Micropost.where("user_id IN (#{following_ids})
-# OR user_id = :user_id", user_id: id)
-
-#no muestro los posteos dechos por mi 
-
 following_ids = "SELECT followed_id FROM relationships
 WHERE follower_id = :user_id"
 Micropost.where("user_id IN (#{following_ids})
-", user_id: id)
+OR user_id = :user_id", user_id: id)
+
+#no muestro los posteos dechos por mi 
+
+# following_ids = "SELECT followed_id FROM relationships
+# WHERE follower_id = :user_id"
+# Micropost.where("user_id IN (#{following_ids})
+# ", user_id: id)
 end
 	
 

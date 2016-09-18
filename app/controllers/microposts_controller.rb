@@ -190,8 +190,13 @@ class MicropostsController < ApplicationController
 	private
 
 	def micropost_params
-		#params.require(:micropost).permit(:content, :precio, :cantidad, :tipo, :id_micropost, :cantidad_nueva, :mt3, :hrs)
-		params.require(:micropost).permit(:content, :precio, :cantidad, :tipo, :mt3, :hrs)
+		if (current_user.vendedor?)
+			params.require(:micropost).permit(:content, :precio, :cantidad, :tipo, :mt3, :hrs)
+		else
+			#params.require(:micropost).permit(:content, :precio, :cantidad, :tipo, :id_micropost, :cantidad_nueva, :mt3, :hrs)
+			params.require(:micropost).permit(:content, :precio, :cantidad, :tipo, :id_micropost, :mt3, :hrs)
+
+		end
 	end
 
 	def correct_user
